@@ -7,7 +7,7 @@ services:
       - .:/app
     ports:
       - 3000:3000
-    depends_on:
+    links:
       - db
     tty: true
     stdin_open: true
@@ -17,5 +17,7 @@ services:
       - db-volume:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
 volumes:
   db-volume:
